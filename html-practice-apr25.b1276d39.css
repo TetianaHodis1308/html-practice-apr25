@@ -26,17 +26,23 @@ body {
 }
 
 .person {
+  width: 200px;
   height: 231px;
 }
 
 .person__photo {
+  justify-content: center;
+  align-items: center;
   margin-bottom: 8px;
+  display: flex;
+  position: relative;
 }
 
 .person__photo-img {
   border-radius: 200px;
   width: 200px;
-  position: relative;
+  animation-duration: 1s;
+  animation-delay: 1s;
 }
 
 .person__photo-rank {
@@ -55,6 +61,7 @@ body {
 }
 
 .person__details {
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -66,6 +73,41 @@ body {
 }
 
 .person__details-extra {
+  font-size: 18px;
+  font-weight: 400;
   display: none;
+}
+
+.person:hover {
+  background-color: #eee;
+  border-radius: 10px;
+  width: 220px;
+  height: auto;
+  transform: translate(-10px);
+}
+
+.person:hover .person__details {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.person:hover .person__details-extra {
+  display: flex;
+}
+
+@keyframes changeBorder {
+  from {
+    border-radius: 200px;
+  }
+
+  to {
+    border-radius: 60px;
+  }
+}
+
+.person:hover .person__photo-img {
+  animation: 1s forwards changeBorder;
 }
 /*# sourceMappingURL=html-practice-apr25.b1276d39.css.map */
