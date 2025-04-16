@@ -1,4 +1,5 @@
 $person-width: 200px;
+$person-height: 231px;
 
 *{
     box-sizing: border-box;
@@ -15,28 +16,36 @@ body{
 
 .people{
     display: grid;
-    grid-template-columns: repeat(2, 200px);
+    grid-template-columns: repeat(2, $person-width);
     column-gap: 30px;
     row-gap: 40px;
     justify-content: center;
     align-items: center;
 
     @media (min-width:1000px) {
-        grid-template-columns: repeat(4, 200px); 
+        grid-template-columns: repeat(4, $person-width); 
     }
 }
 
 .person{
-    height: 231px;
+    height: $person-height;
+    width: $person-width;
 
     &__photo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-bottom: 8px;
-    }
-    &__photo-img{
-        width: 200px;
-        border-radius: 200px;
         position: relative;
     }
+
+    &__photo-img{
+        width: $person-width;
+        border-radius: 200px;
+        animation-duration: 1s;
+        animation-delay: 1s;
+    }
+
     &__photo-rank{
         position: absolute;
         top: (($person-width - 32px) / 2) ;
@@ -54,6 +63,7 @@ body{
 
     &__details{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
@@ -65,5 +75,37 @@ body{
 
     &__details-extra{
         display: none;
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    &:hover{
+        background-color: #EEEEEE;
+        border-radius: 10px;
+        width: 220px;
+        height: auto;
+        transform: translate(-10px,0);
+        .person__details{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .person__details-extra{
+            display: flex;
+        }
+
+        @keyframes changeBorder {
+            from{
+                border-radius: 200px;
+            }
+            to{
+                border-radius: 60px;
+            }
+        }
+
+        .person__photo-img{
+            animation: changeBorder 1s forwards;
+        }
     }
 }
